@@ -1,0 +1,12 @@
+name: Tracker
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  tracker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "Issue opened"

@@ -1,0 +1,26 @@
+name: Workflow
+
+on:
+  push:
+
+jobs:
+  update-files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Update HTML
+        run: |
+          echo "<p>Updated</p>" >> index.html
+
+      - name: Update README
+        run: |
+          echo "Updated on $(date)" >> README.md
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Workflow update" || echo "No changes"
